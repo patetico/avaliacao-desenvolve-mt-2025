@@ -4,6 +4,7 @@ import type { ControllerWithoutRenderProps } from '~/components/searchForm/schem
 
 export const StatusInput = (props: ControllerWithoutRenderProps) => (
   <ClearableRadioGroup
+    label="Status"
     items={[
       ['Desaparecido', 'DESAPARECIDO'],
       ['Localizado', 'LOCALIZADO'],

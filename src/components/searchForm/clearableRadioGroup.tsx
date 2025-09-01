@@ -5,15 +5,16 @@ import { RadioGroup, RadioGroupItem } from '~ui/radio-group.tsx';
 
 
 interface ClearableRadioGroupProps extends Omit<ControllerProps, 'render'> {
+  label: string;
   items: [label: string, value: string][];
 }
 
-const ClearableRadioGroup = ({ control, items, ...otherProps }: ClearableRadioGroupProps) => (
+const ClearableRadioGroup = ({ control, label, items, ...otherProps }: ClearableRadioGroupProps) => (
   <FormField
     control={control}
     render={({ field }) => (
       <FormItem className="space-y-3">
-        <FormLabel>Gênero</FormLabel>
+        <FormLabel>{label}</FormLabel>
         <FormControl>
           <RadioGroup
             value={field.value || null}

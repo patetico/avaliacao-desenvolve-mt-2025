@@ -4,6 +4,7 @@ import type { ControllerWithoutRenderProps } from '~/components/searchForm/schem
 
 export const GeneroInput = (props: ControllerWithoutRenderProps) => (
   <ClearableRadioGroup
+    label="Sexo"
     items={[
       ['Feminino', 'FEMININO'],
       ['Masculino', 'MASCULINO'],
