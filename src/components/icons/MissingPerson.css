@@ -1,0 +1,11 @@
+:root {
+  --icon-person: var(--color-neutral-300);
+  --icon-person-border: var(--color-neutral-400);
+  --icon-person-bg: var(--color-neutral-200);
+}
+
+.dark {
+  --icon-person: var(--color-neutral-700);
+  --icon-person-border: var(--color-neutral-800);
+  --icon-person-bg: var(--color-neutral-600);
+}
