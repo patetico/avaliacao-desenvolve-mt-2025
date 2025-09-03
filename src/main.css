@@ -1,1 +1,5 @@
 @import "./shadcn.css";
+
+:root {
+  --header-height: calc(var(--spacing) * 16);
+}

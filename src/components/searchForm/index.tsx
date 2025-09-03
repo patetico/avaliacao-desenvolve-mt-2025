@@ -11,7 +11,7 @@ import { Button } from "~ui/button.tsx";
 import { Form } from "~ui/form.tsx";
 
 
-export default function QueryForm() {
+function SearchForm() {
   const form = useForm<SearchFormParams>({ resolver: zodResolver(searchFormSchema) });
 
   function onSubmit(values: SearchFormParams) {
@@ -40,3 +40,5 @@ export default function QueryForm() {
     </Form>
   );
 }
+
+export default SearchForm;

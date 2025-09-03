@@ -22,7 +22,7 @@ const ClearableRadioGroup = ({ control, label, items, ...otherProps }: Clearable
             className="flex flex-col space-y-1"
           >
             {items.map(([label, value], index) => (
-              <FormItem className="flex items-center space-x-3 space-y-0" key={index}>
+              <FormItem className="flex items-center" key={index}>
                 <FormControl>
                   <RadioGroupItem value={value} />
                 </FormControl>
