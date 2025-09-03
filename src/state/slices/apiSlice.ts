@@ -15,8 +15,8 @@ const apiSlice = createApi({
     estatisticas: builder.query<EstatisticaResp, void>({
       query: () => ({ url: '/v1/pessoas/aberto/estatistico' }),
     }),
-    pessoasDesaparecidas: builder.query<BuscaResp, BuscaReq | undefined>({
-      query: (params) => ({ url: '/v1/pessoas/aberto/filtro', params }),
+    pessoasDesaparecidas: builder.query<BuscaResp, BuscaReq | void>({
+      query: (params) => ({ url: '/v1/pessoas/aberto/filtro', params: params || undefined }),
     }),
   }),
 });
