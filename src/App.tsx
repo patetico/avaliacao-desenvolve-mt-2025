@@ -1,11 +1,13 @@
-import QueryForm from '~/components/searchForm';
+import SearchForm from '~/components/searchForm';
+import ThemeProvider from '~/components/themeProvider';
 
 
 function App() {
+
   return (
-    <>
-      <QueryForm />
-    </>
+    <ThemeProvider>
+      <SearchForm />
+    </ThemeProvider>
   )
 }
 
