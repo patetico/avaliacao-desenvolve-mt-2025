@@ -1,6 +1,7 @@
-"use client";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { UserRoundSearch } from 'lucide-react';
 import { useForm } from "react-hook-form";
+
 import { GeneroInput } from '~/components/searchForm/generoInput.tsx';
 import { IdadeInput } from '~/components/searchForm/idadeInput.tsx';
 import { NomeInput } from '~/components/searchForm/nomeInput.tsx';
@@ -35,7 +36,12 @@ function SearchForm() {
             <StatusInput control={form.control} />
           </div>
         </div>
-        <Button type="submit">Submit</Button>
+        <div className="flex justify-end">
+          <Button type="submit">
+            Buscar
+            <UserRoundSearch />
+          </Button>
+        </div>
       </form>
     </Form>
   );
