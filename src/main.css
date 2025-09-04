@@ -3,3 +3,7 @@
 :root {
   --header-height: calc(var(--spacing) * 16);
 }
+
+html, body {
+  background: var(--background);
+}
