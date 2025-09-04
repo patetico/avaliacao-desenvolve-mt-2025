@@ -1,14 +1,12 @@
-'use client';
-
 import * as SliderPrimitive from '@radix-ui/react-slider';
-import { type ComponentProps, useMemo } from 'react';
+import { type ComponentProps, type ReactNode, useMemo } from 'react';
 
 import { cn } from '~/lib/shadcn.ts';
 
 
 interface SliderProps extends ComponentProps<typeof SliderPrimitive.Root> {
   labelPosition?: 'top' | 'bottom';
-  labelRender?: (value: number | undefined) => React.ReactNode;
+  labelRender?: (value: number) => ReactNode;
 }
 
 function Slider(
