@@ -15,11 +15,11 @@ const IdadeInput = ({ control, ...otherProps }: ControllerWithoutRenderProps) =>
           <Slider
             className="pt-4"
             min={0}
-            max={150}
+            max={100}
             step={1}
             value={field.value}
             onValueChange={field.onChange}
-            labelRender={(v) => (<div className="whitespace-pre text-sm">{v} ano{v == 1 || 's'}</div>)}
+            labelRender={(v) => (<div className="whitespace-pre text-sm">{v}{v > 99 && '+'} ano{v == 1 || 's'}</div>)}
           />
         </FormControl>
         <ClearField field={field} />
