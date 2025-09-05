@@ -23,7 +23,7 @@ function DesaparecidosPageSize() {
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
-        {OPTIONS.map((opt) => <SelectItem value={opt.toString()}>{opt} por página</SelectItem>)}
+        {OPTIONS.map((opt) => <SelectItem key={opt} value={opt.toString()}>{opt} por página</SelectItem>)}
       </SelectContent>
     </Select>
   );
