@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from 'react-redux';
 import apiSlice from '~/state/slices/apiSlice.ts';
+import desaparecidosQuerySlice from '~/state/slices/desaparecidosQuerySlice.ts';
 
 
 const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
+    [desaparecidosQuerySlice.reducerPath]: desaparecidosQuerySlice.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
 });

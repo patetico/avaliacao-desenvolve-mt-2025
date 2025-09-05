@@ -8,19 +8,21 @@ import { NomeInput } from '~/components/searchForm/nomeInput.tsx';
 import { type SearchFormParams, searchFormSchema } from '~/components/searchForm/schema.tsx';
 import { StatusInput } from '~/components/searchForm/statusInput.tsx';
 
+import { searchFormToApiQuery } from '~/lib/converters.ts';
+import { desaparecidosQueryActions } from '~/state/slices/desaparecidosQuerySlice.ts';
+import { useAppDispatch } from '~/state/store.ts';
+
 import { Button } from "~ui/button.tsx";
 import { Form } from "~ui/form.tsx";
 
 
 function SearchForm() {
   const form = useForm<SearchFormParams>({ resolver: zodResolver(searchFormSchema) });
+  const appDispatch = useAppDispatch();
 
   function onSubmit(values: SearchFormParams) {
-    try {
-      console.log(values);
-    } catch (error) {
-      console.error("Form submission error", error);
-    }
+    const query = searchFormToApiQuery(values);
+    appDispatch(desaparecidosQueryActions.update(query));
   }
 
   return (
