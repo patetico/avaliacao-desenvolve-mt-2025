@@ -1,12 +1,14 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
+import { RouterProvider } from "react-router/dom";
 import { z } from 'zod';
 import { pt } from 'zod/locales';
 
+import { router } from './routes';
+import store from './state/store';
+
 import './main.css';
-import store from './state/store.ts';
-import App from './App.tsx';
 
 
 z.config(pt());
@@ -14,7 +16,7 @@ z.config(pt());
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      <App />
+      <RouterProvider router={router} />
     </Provider>
   </StrictMode>,
 )

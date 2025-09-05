@@ -1,10 +1,10 @@
 import Desaparecidos from '~/components/desaparecidos';
+import PageHeader from '~/components/pageHeader';
 import SearchForm from '~/components/searchForm';
 import ThemeProvider from '~/components/themeProvider';
-import PageHeader from './components/pageHeader';
 
 
-function App() {
+function FrontPage() {
   return (
     <ThemeProvider>
       <PageHeader className="sticky bg-background top-0 left-0 z-50">
@@ -28,4 +28,4 @@ function App() {
   )
 }
 
-export default App
+export default FrontPage;
