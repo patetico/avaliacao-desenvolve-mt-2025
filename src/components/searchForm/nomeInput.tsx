@@ -1,6 +1,6 @@
-import type { ControllerWithoutRenderProps } from '~/components/searchForm/schema.tsx';
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '~ui/form.tsx';
-import { Input } from '~ui/input.tsx';
+import type { ControllerWithoutRenderProps } from '~/components/searchForm/schema';
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '~ui/form';
+import { Input } from '~ui/input';
 
 
 const sanitizeInput = (text: string) => text.replaceAll(/\s+/g, ' ');

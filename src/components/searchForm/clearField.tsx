@@ -1,7 +1,7 @@
 import { type ComponentProps } from 'react';
 import type { ControllerRenderProps } from 'react-hook-form';
-import { cn } from '~/lib/shadcn.ts';
-import { Button, type UiButtonProps } from '~ui/button.tsx';
+import { cn } from '~/lib/shadcn';
+import { Button, type UiButtonProps } from '~ui/button';
 
 
 interface ClearFieldProps extends ComponentProps<'div'> {

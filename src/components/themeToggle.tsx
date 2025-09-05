@@ -2,8 +2,8 @@ import { Moon, Sun, SunMoon } from "lucide-react";
 import { useState } from 'react';
 import { useTheme } from '~/components/themeProvider';
 import { THEMES } from '~/components/themeProvider/useTheme.ts';
-import { Button, type UiButtonProps } from "~ui/button.tsx";
-import { Tooltip, TooltipContent, TooltipTrigger } from '~ui/tooltip.tsx';
+import { Button, type UiButtonProps } from "~ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from '~ui/tooltip';
 
 
 const ThemeToggle = (props: UiButtonProps) => {

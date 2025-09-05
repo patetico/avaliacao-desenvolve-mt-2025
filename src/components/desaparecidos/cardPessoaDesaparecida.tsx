@@ -1,16 +1,16 @@
 import { ChevronsDownUp, ChevronsUpDown, Link2 } from 'lucide-react';
 import { type ComponentProps, useState } from 'react';
 
-import MissingPerson from '~/components/icons/MissingPerson.tsx';
+import MissingPerson from '~/components/icons/MissingPerson';
 
-import { toDate } from '~/lib/converters.ts';
-import { formatDate } from '~/lib/formatters.ts';
-import type { PessoaDTO } from '~/types/api/_base.ts';
+import { toDate } from '~/lib/converters';
+import { formatDate } from '~/lib/formatters';
+import type { PessoaDTO } from '~/types/api/_base';
 
-import { Button } from '~ui/button.tsx';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '~ui/card.tsx';
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '~ui/collapsible.tsx';
-import { Separator } from '~ui/separator.tsx';
+import { Button } from '~ui/button';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '~ui/card';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '~ui/collapsible';
+import { Separator } from '~ui/separator';
 
 
 interface CardPessoaDesaparecidaProps extends ComponentProps<'div'> {

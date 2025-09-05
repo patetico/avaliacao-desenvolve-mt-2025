@@ -1,7 +1,8 @@
 import type { ControllerProps } from 'react-hook-form';
-import { ClearField } from '~/components/searchForm/clearField.tsx';
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '~ui/form.tsx';
-import { RadioGroup, RadioGroupItem } from '~ui/radio-group.tsx';
+
+import { ClearField } from '~/components/searchForm/clearField';
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '~ui/form';
+import { RadioGroup, RadioGroupItem } from '~ui/radio-group';
 
 
 interface ClearableRadioGroupProps extends Omit<ControllerProps, 'render'> {

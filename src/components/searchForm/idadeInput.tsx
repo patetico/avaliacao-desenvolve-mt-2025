@@ -1,7 +1,7 @@
-import { ClearField } from '~/components/searchForm/clearField.tsx';
-import type { ControllerWithoutRenderProps } from '~/components/searchForm/schema.tsx';
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '~ui/form.tsx';
-import { Slider } from '~ui/slider.tsx';
+import { ClearField } from '~/components/searchForm/clearField';
+import type { ControllerWithoutRenderProps } from '~/components/searchForm/schema';
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '~ui/form';
+import { Slider } from '~ui/slider';
 
 
 const IdadeInput = ({ control, ...otherProps }: ControllerWithoutRenderProps) => (

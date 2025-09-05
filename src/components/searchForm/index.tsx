@@ -2,18 +2,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { UserRoundSearch } from 'lucide-react';
 import { useForm } from "react-hook-form";
 
-import { GeneroInput } from '~/components/searchForm/generoInput.tsx';
-import { IdadeInput } from '~/components/searchForm/idadeInput.tsx';
-import { NomeInput } from '~/components/searchForm/nomeInput.tsx';
-import { type SearchFormParams, searchFormSchema } from '~/components/searchForm/schema.tsx';
-import { StatusInput } from '~/components/searchForm/statusInput.tsx';
+import { GeneroInput } from '~/components/searchForm/generoInput';
+import { IdadeInput } from '~/components/searchForm/idadeInput';
+import { NomeInput } from '~/components/searchForm/nomeInput';
+import { type SearchFormParams, searchFormSchema } from '~/components/searchForm/schema';
+import { StatusInput } from '~/components/searchForm/statusInput';
 
-import { searchFormToApiQuery } from '~/lib/converters.ts';
-import { desaparecidosQueryActions } from '~/state/slices/desaparecidosQuerySlice.ts';
-import { useAppDispatch } from '~/state/store.ts';
+import { searchFormToApiQuery } from '~/lib/converters';
+import { desaparecidosQueryActions } from '~/state/slices/desaparecidosQuerySlice';
+import { useAppDispatch } from '~/state/store';
 
-import { Button } from "~ui/button.tsx";
-import { Form } from "~ui/form.tsx";
+import { Button } from "~ui/button";
+import { Form } from "~ui/form";
 
 
 function SearchForm() {
