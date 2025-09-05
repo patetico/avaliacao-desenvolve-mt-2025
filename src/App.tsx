@@ -18,8 +18,8 @@ function App() {
           <SearchForm />
         </aside>
 
-        <main className="p-6 xl:px-16 py-8 grow">
-          <Desaparecidos className="max-w-6xl mx-auto py-8" />
+        <main className="p-6 xl:px-16 xl:py-8 grow">
+          <Desaparecidos className="max-w-6xl mx-auto" />
         </main>
       </div>
 

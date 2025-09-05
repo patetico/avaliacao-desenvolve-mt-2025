@@ -1,4 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { clamp } from 'es-toolkit';
 import type { BuscaReq } from '~/types/api';
 
 
@@ -19,6 +20,9 @@ const desaparecidosQuerySlice = createSlice({
     }),
     setPagina: (state, { payload }: PayloadAction<number>) => {
       state.pagina = Math.max(0, payload);
+    },
+    setPorPagina: (state, { payload }: PayloadAction<number>) => {
+      state.porPagina = clamp(payload, 0, 200);
     },
   },
 });
