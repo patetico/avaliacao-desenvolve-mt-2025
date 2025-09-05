@@ -17,7 +17,7 @@ interface CardPessoaDesaparecidaProps extends ComponentProps<'div'> {
   pessoa: PessoaDTO;
 }
 
-export function CardPessoaDesaparecida({ pessoa, ...props }: CardPessoaDesaparecidaProps) {
+function CardPessoaDesaparecida({ pessoa, ...props }: CardPessoaDesaparecidaProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const image = pessoa.urlFoto
@@ -87,3 +87,5 @@ export function CardPessoaDesaparecida({ pessoa, ...props }: CardPessoaDesaparec
     </Collapsible>
   );
 }
+
+export default CardPessoaDesaparecida;
