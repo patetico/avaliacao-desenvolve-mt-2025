@@ -1,7 +1,7 @@
 import { ChevronsDownUp, ChevronsUpDown, Link2 } from 'lucide-react';
 import { type ComponentProps, useState } from 'react';
 
-import MissingPerson from '~/components/icons/MissingPerson';
+import FotoPessoaDesaparecida from '~/components/fotoPessoaDesaparecida';
 
 import { toDate } from '~/lib/converters';
 import { formatDate } from '~/lib/formatters';
@@ -20,10 +20,6 @@ interface CardPessoaDesaparecidaProps extends ComponentProps<'div'> {
 function CardPessoaDesaparecida({ pessoa, ...props }: CardPessoaDesaparecidaProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const image = pessoa.urlFoto
-    ? (<img src={pessoa.urlFoto} alt="Foto da pessoa desaparecida" className="object-contain size-full" />)
-    : (<MissingPerson aria-label="Ilustração de pessoa desaparecida sem foto" className="size-full" />);
-
   const extra = pessoa.ultimaOcorrencia;
 
   const perdidoEm = toDate(extra?.dtDesaparecimento);
@@ -37,7 +33,7 @@ function CardPessoaDesaparecida({ pessoa, ...props }: CardPessoaDesaparecidaProp
     <Collapsible open={isExpanded} asChild>
       <Card {...props}>
         <div className="aspect-square w-full px-6">
-          {image}
+          <FotoPessoaDesaparecida url={pessoa.urlFoto} />
         </div>
 
         <CardHeader>
