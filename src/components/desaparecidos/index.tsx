@@ -25,7 +25,7 @@ function DesaparecidosContent({ className, ...props }: ComponentProps<'div'>) {
     <div className={cn("@container/desaparecidos flex flex-col gap-2", className)} {...props}>
       <DesaparecidosHeader className="mb-4" />
       <DesaparecidosPagination />
-      <div className="grid auto-rows-min grid-rows-none gap-4 grid-cols-1 @xl/desaparecidos:grid-cols-2 @3xl/desaparecidos:grid-cols-3 @6xl/desaparecidos:grid-cols-4">
+      <div className="grid auto-rows-min grid-rows-none gap-4 grid-cols-1 @2xl/desaparecidos:grid-cols-2 @4xl/desaparecidos:grid-cols-4 @6xl/desaparecidos:grid-cols-6">
         {isFetching
           ? range(pageSize).map(i => <CardPessoaDesaparecidaSkeleton key={i} />)
           : pessoasDesaparecidas.map(p => (<CardPessoaDesaparecida key={p.id} pessoa={p} className="h-full" />))

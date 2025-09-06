@@ -1,5 +1,6 @@
 import { ClearField } from '~/components/searchForm/clearField';
 import type { ControllerWithoutRenderProps } from '~/components/searchForm/schema';
+import { plural } from '~/lib/formatters';
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '~ui/form';
 import { Slider } from '~ui/slider';
 
@@ -19,7 +20,7 @@ const IdadeInput = ({ control, ...otherProps }: ControllerWithoutRenderProps) =>
             step={1}
             value={field.value}
             onValueChange={field.onChange}
-            labelRender={(v) => (<div className="whitespace-pre text-sm">{v}{v > 99 && '+'} ano{v == 1 || 's'}</div>)}
+            labelRender={(v) => (<div className="whitespace-pre text-sm">{v}{v > 99 && '+'} {plural(v, 'ano')}</div>)}
           />
         </FormControl>
         <ClearField field={field} />

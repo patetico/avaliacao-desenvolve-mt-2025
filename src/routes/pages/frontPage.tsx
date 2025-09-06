@@ -10,7 +10,7 @@ function FrontPage() {
       </aside>
 
       <main className="p-6 xl:px-16 xl:py-8 grow">
-        <Desaparecidos className="max-w-6xl mx-auto" />
+        <Desaparecidos className="max-w-[96rem] mx-auto" />
       </main>
     </div>
   )
