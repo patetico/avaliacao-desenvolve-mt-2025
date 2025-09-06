@@ -25,7 +25,8 @@ export interface TransformedPessoaDTO {
 const transformPessoaDTO = (dto: PessoaDTO): TransformedPessoaDTO => {
   const ocorrencia = dto.ultimaOcorrencia;
 
-  const idadeTxt = dto.idade === undefined ? '?? anos' : plural(dto.idade, 'ano');
+  const idadeTxt = dto.idade === undefined ? '?? anos' : `${dto.idade} ${plural(dto.idade, 'ano')}`;
+
   return {
     id: dto.id,
     nome: dto.nome || '',
