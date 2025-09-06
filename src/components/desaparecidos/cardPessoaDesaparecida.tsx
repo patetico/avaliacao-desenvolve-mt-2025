@@ -5,7 +5,7 @@ import FotoPessoaDesaparecida from '~/components/fotoPessoaDesaparecida';
 
 import { toDate } from '~/lib/converters';
 import { formatDate } from '~/lib/formatters';
-import type { PessoaDTO } from '~/types/api/_base';
+import type { TransformedPessoaDTO } from '~/state/slices/apiSlice';
 
 import { Button } from '~ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '~ui/card';
@@ -14,57 +14,58 @@ import { Separator } from '~ui/separator';
 
 
 interface CardPessoaDesaparecidaProps extends ComponentProps<'div'> {
-  pessoa: PessoaDTO;
+  pessoa: TransformedPessoaDTO;
 }
 
 function CardPessoaDesaparecida({ pessoa, ...props }: CardPessoaDesaparecidaProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const extra = pessoa.ultimaOcorrencia;
+  const {
+    id,
+    nome,
+    idadeTxt,
+    sexo,
+    urlFoto,
+    perdidoEm,
+    encontradoEm,
+    local,
+    informacao,
+    roupas,
+  } = pessoa;
 
-  const perdidoEm = toDate(extra?.dtDesaparecimento);
-  const achadoEm = toDate(extra?.dataLocalizacao);
-  const local = extra?.localDesaparecimentoConcat;
-  const roupas = extra?.ocorrenciaEntrevDesapDTO?.vestimentasDesaparecido;
-  const infos = extra?.ocorrenciaEntrevDesapDTO?.informacao;
+  const hasMoreInfo = roupas || informacao;
 
-  const hasMoreInfo = roupas || infos;
   return (
     <Collapsible open={isExpanded} asChild>
       <Card {...props}>
-        <div className="aspect-square w-full px-6">
-          <FotoPessoaDesaparecida url={pessoa.urlFoto} />
-        </div>
-
         <CardHeader>
-          <CardTitle className="uppercase">{pessoa.nome}</CardTitle>
-          <CardDescription>{pessoa.idade} anos, sexo {pessoa.sexo?.toLowerCase()}</CardDescription>
+          <div className="aspect-square w-full">
+            <FotoPessoaDesaparecida url={urlFoto} />
+          </div>
+          <CardTitle className="uppercase">{nome}</CardTitle>
+          <CardDescription>{idadeTxt}, sexo {sexo?.toLowerCase()}</CardDescription>
         </CardHeader>
 
         <CardContent className="py-0">
-          {extra && (
-            <>
-              <ul className="ml-4 list-disc [&>li]:mt-1">
-                {achadoEm
-                  ? <li>Encontrado: {formatDate(achadoEm)}</li>
-                  : <li>Desaparecido: {perdidoEm ? formatDate(perdidoEm) : '---'}</li>}
-                {local && <li>Local: {local}</li>}
+          <ul className="ml-4 list-disc [&>li]:mt-1">
+            {encontradoEm
+              ? <li>Encontrado: {formatDate(encontradoEm)}</li>
+              : <li>Desaparecido: {perdidoEm ? formatDate(perdidoEm) : '--/--/----'}</li>}
+            {local && <li>Local: {local}</li>}
 
-                {roupas &&
-                  <CollapsibleContent>
-                    <li>Vestimenta: {roupas}</li>
-                  </CollapsibleContent>
-                }
-              </ul>
+            {roupas &&
+              <CollapsibleContent>
+                <li>Vestimenta: {roupas}</li>
+              </CollapsibleContent>
+            }
+          </ul>
 
-              {infos &&
-                <CollapsibleContent>
-                  <Separator className="my-2" />
-                  <p>{infos}</p>
-                </CollapsibleContent>
-              }
-            </>
-          )}
+          {informacao &&
+            <CollapsibleContent>
+              <Separator className="my-2" />
+              <p>{informacao}</p>
+            </CollapsibleContent>
+          }
         </CardContent>
 
         <CardFooter className="mt-auto flex justify-end gap-2">

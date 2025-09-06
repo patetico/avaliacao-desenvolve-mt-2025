@@ -17,18 +17,19 @@ function DesaparecidosPagination() {
   const appDispatch = useAppDispatch();
   const paginaAtual = useAppSelector(state => state.desaparecidosQuery.pagina) || 0;
 
-  const { data: { totalPages = 0 } = { totalPages: 0 } } = useDesaparecidosApi();
+  const { data } = useDesaparecidosApi();
+  const countPages = data?.countPages || 0;
 
   const pages = usePagination({
     current: paginaAtual,
-    last: totalPages,
+    last: countPages,
   });
 
   const setPage = (page: number) => {
     appDispatch(desaparecidosQueryActions.setPagina(page));
   };
 
-  if (!totalPages) return;
+  if (!countPages) return;
 
   return (
     <Pagination>
@@ -55,7 +56,7 @@ function DesaparecidosPagination() {
         ))}
 
         <PaginationItem>
-          <PaginationNext onClick={() => setPage(paginaAtual + 1)} disabled={paginaAtual + 1 === totalPages} />
+          <PaginationNext onClick={() => setPage(paginaAtual + 1)} disabled={paginaAtual + 1 === countPages} />
         </PaginationItem>
       </PaginationContent>
     </Pagination>
