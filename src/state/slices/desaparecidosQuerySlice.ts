@@ -22,7 +22,9 @@ const desaparecidosQuerySlice = createSlice({
       state.pagina = Math.max(0, payload);
     },
     setPorPagina: (state, { payload }: PayloadAction<number>) => {
+      const { porPagina, pagina } = state;
       state.porPagina = clamp(payload, 0, 200);
+      state.pagina = Math.floor((porPagina || 0) * (pagina || 0) / payload);
     },
   },
 });
