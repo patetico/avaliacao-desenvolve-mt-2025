@@ -12,13 +12,6 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '~ui/collaps
 import { Separator } from '~ui/separator';
 
 
-const STATUS_COLORS: Record<TransformedPessoaDTO['statusTxt'], string> = {
-  'desaparecida': 'text-red-400',
-  'desaparecido': 'text-red-400',
-  'encontrado': 'text-teal-400',
-  'encontrada': 'text-teal-400',
-};
-
 interface CardPessoaDesaparecidaProps extends ComponentProps<'div'> {
   pessoa: TransformedPessoaDTO;
 }
@@ -50,7 +43,7 @@ function CardPessoaDesaparecida({ pessoa, ...props }: CardPessoaDesaparecidaProp
             <span
               className={cn(
                 "uppercase text-sm font-bold border-y-2 border-y-current px-2 tracking-widest text-muted",
-                STATUS_COLORS[statusTxt],
+                statusTxt.startsWith('encontrad') ? 'text-encontrada' : 'text-desaparecida',
               )}
             >
               {statusTxt}
