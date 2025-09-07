@@ -1,5 +1,6 @@
 import { ChevronsDownUp, ChevronsUpDown, Link2 } from 'lucide-react';
 import { type ComponentProps, useState } from 'react';
+import { Link } from 'react-router';
 
 import FotoPessoaDesaparecida from '~/components/fotoPessoaDesaparecida';
 import { formatDate } from '~/lib/formatters';
@@ -42,7 +43,7 @@ function CardPessoaDesaparecida({ pessoa, ...props }: CardPessoaDesaparecidaProp
           <div className="flex justify-center">
             <span
               className={cn(
-                "uppercase text-sm font-bold border-y-2 border-y-current px-2 tracking-widest text-muted",
+                "uppercase text-sm font-bold border-y-2 border-y-current px-2 tracking-widest",
                 statusTxt.startsWith('encontrad') ? 'text-encontrada' : 'text-desaparecida',
               )}
             >
@@ -84,8 +85,10 @@ function CardPessoaDesaparecida({ pessoa, ...props }: CardPessoaDesaparecidaProp
               </Button>
             </CollapsibleTrigger>
           }
-          <Button size="icon" variant="outline">
-            <Link2 />
+          <Button size="icon" variant="outline" asChild>
+            <Link to={`/pessoa/${id}`}>
+              <Link2 />
+            </Link>
           </Button>
         </CardFooter>
       </Card>
