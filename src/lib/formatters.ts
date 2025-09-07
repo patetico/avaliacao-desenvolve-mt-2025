@@ -6,7 +6,9 @@ const intlDate = new Intl.DateTimeFormat(
   { day: '2-digit', month: 'short', year: 'numeric' },
 );
 
-const formatDate = (date: Date) => {
+const formatDate = (date?: Date) => {
+  if (!date) return '??/??/????';
+
   const rawParts = intlDate.formatToParts(date);
   const parts = mapValues(keyBy(rawParts, p => p.type), p => p.value);
   return `${parts.day}/${parts.month}/${parts.year}`;

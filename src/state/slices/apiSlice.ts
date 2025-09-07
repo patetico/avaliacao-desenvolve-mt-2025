@@ -8,6 +8,8 @@ import type { PessoaDTO, Sexo } from '~/types/api/_base';
 import type { DetalhaPessoaReq, DetalhaPessoaResp } from '~/types/api/detalhaPessoa.ts';
 
 
+type StatusTxt = `${'desaparecid' | 'encontrad'}${'o' | 'a'}`
+
 export interface TransformedPessoaDTO {
   id?: number;
   nome: string;
@@ -15,6 +17,7 @@ export interface TransformedPessoaDTO {
   idadeTxt: string;
   sexo: Lowercase<Sexo> | 'desconhecido';
   urlFoto?: string;
+  statusTxt: StatusTxt,
   perdidoEm?: Date;
   encontradoEm?: Date;
   local?: string;
@@ -26,16 +29,21 @@ const transformPessoaDTO = (dto: PessoaDTO): TransformedPessoaDTO => {
   const ocorrencia = dto.ultimaOcorrencia;
 
   const idadeTxt = dto.idade === undefined ? '?? anos' : `${dto.idade} ${plural(dto.idade, 'ano')}`;
+  const sexo = toLower(dto.sexo) || 'desconhecido';
+  const encontradoEm = toDate(ocorrencia?.dataLocalizacao);
+
+  const statusTxt = `${encontradoEm ? 'encontrad' : 'desaparecid'}${sexo === 'feminino' ? 'a' : 'o'}` as const;
 
   return {
     id: dto.id,
     nome: dto.nome || '',
     idade: dto.idade,
     idadeTxt,
-    sexo: toLower(dto.sexo) || 'desconhecido',
+    sexo,
+    statusTxt,
     urlFoto: dto.urlFoto,
     perdidoEm: toDate(ocorrencia?.dtDesaparecimento),
-    encontradoEm: toDate(ocorrencia?.dataLocalizacao),
+    encontradoEm,
     local: ocorrencia?.localDesaparecimentoConcat,
     informacao: ocorrencia?.ocorrenciaEntrevDesapDTO?.informacao,
     roupas: ocorrencia?.ocorrenciaEntrevDesapDTO?.vestimentasDesaparecido,

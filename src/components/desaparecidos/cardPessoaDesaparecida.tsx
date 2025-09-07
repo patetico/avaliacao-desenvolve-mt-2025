@@ -2,9 +2,8 @@ import { ChevronsDownUp, ChevronsUpDown, Link2 } from 'lucide-react';
 import { type ComponentProps, useState } from 'react';
 
 import FotoPessoaDesaparecida from '~/components/fotoPessoaDesaparecida';
-
-import { toDate } from '~/lib/converters';
 import { formatDate } from '~/lib/formatters';
+import { cn } from '~/lib/shadcn';
 import type { TransformedPessoaDTO } from '~/state/slices/apiSlice';
 
 import { Button } from '~ui/button';
@@ -12,6 +11,13 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '~ui/collapsible';
 import { Separator } from '~ui/separator';
 
+
+const STATUS_COLORS: Record<TransformedPessoaDTO['statusTxt'], string> = {
+  'desaparecida': 'text-red-400',
+  'desaparecido': 'text-red-400',
+  'encontrado': 'text-teal-400',
+  'encontrada': 'text-teal-400',
+};
 
 interface CardPessoaDesaparecidaProps extends ComponentProps<'div'> {
   pessoa: TransformedPessoaDTO;
@@ -25,6 +31,7 @@ function CardPessoaDesaparecida({ pessoa, ...props }: CardPessoaDesaparecidaProp
     nome,
     idadeTxt,
     sexo,
+    statusTxt,
     urlFoto,
     perdidoEm,
     encontradoEm,
@@ -39,6 +46,16 @@ function CardPessoaDesaparecida({ pessoa, ...props }: CardPessoaDesaparecidaProp
     <Collapsible open={isExpanded} asChild>
       <Card {...props}>
         <CardHeader>
+          <div className="flex justify-center">
+            <span
+              className={cn(
+                "uppercase text-sm font-bold border-y-2 border-y-current px-2 tracking-widest text-muted",
+                STATUS_COLORS[statusTxt],
+              )}
+            >
+              {statusTxt}
+            </span>
+          </div>
           <div className="aspect-square w-full">
             <FotoPessoaDesaparecida url={urlFoto} />
           </div>
@@ -48,9 +65,7 @@ function CardPessoaDesaparecida({ pessoa, ...props }: CardPessoaDesaparecidaProp
 
         <CardContent className="py-0">
           <ul className="ml-4 list-disc [&>li]:mt-1">
-            {encontradoEm
-              ? <li>Encontrado: {formatDate(encontradoEm)}</li>
-              : <li>Desaparecido: {perdidoEm ? formatDate(perdidoEm) : '--/--/----'}</li>}
+            <li>Data: {formatDate(encontradoEm ?? perdidoEm)}</li>
             {local && <li>Local: {local}</li>}
 
             {roupas &&
