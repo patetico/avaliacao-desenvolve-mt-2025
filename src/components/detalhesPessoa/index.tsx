@@ -1,5 +1,6 @@
 import type { ComponentProps } from 'react';
 import Pessoa from '~/components/detalhesPessoa/pessoa';
+import PessoaSkeleton from '~/components/detalhesPessoa/pessoaSkeleton';
 import { cn } from '~/lib/shadcn.ts';
 import { type TransformedPessoaDTO, useDetalhesPessoaQuery } from '~/state/slices/apiSlice.ts';
 
@@ -10,8 +11,9 @@ interface DetalhesPessoaContentProps {
 }
 
 function DetalhesPessoaContent({ isFetching, detalhes }: DetalhesPessoaContentProps) {
-  if (isFetching) return 'carregando...'; // TODO: skeleton
+  if (isFetching) return (<PessoaSkeleton />);
   if (!detalhes) return 'erro'; // TODO: error message
+
   return (<Pessoa detalhes={detalhes} />);
 }
 

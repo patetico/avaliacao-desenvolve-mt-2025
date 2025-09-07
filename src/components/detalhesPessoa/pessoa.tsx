@@ -17,12 +17,12 @@ function NaoInformado() {
   );
 }
 
-interface BlehProps extends ComponentProps<'li'> {
+interface InfoDesaparecimentoProps extends ComponentProps<'li'> {
   label: string;
   info?: ReactNode;
 }
 
-function InfoDesaparecimento({ label, info, className, ...props }: BlehProps) {
+function InfoDesaparecimento({ label, info, className, ...props }: InfoDesaparecimentoProps) {
   return (
     <li className={cn('ml-4 -indent-4', className)} {...props}>
       <span className="text-sm text-muted-foreground uppercase">{label}:</span>
