@@ -65,7 +65,7 @@ function CardPessoaDesaparecida({ pessoa, ...props }: CardPessoaDesaparecidaProp
             {local && <li>Local: {local}</li>}
 
             {roupas &&
-              <CollapsibleContent>
+              <CollapsibleContent asChild>
                 <li>Vestimenta: {roupas}</li>
               </CollapsibleContent>
             }

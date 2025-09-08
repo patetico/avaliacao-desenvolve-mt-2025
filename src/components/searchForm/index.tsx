@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UserRoundSearch } from 'lucide-react';
+import type { ComponentProps } from 'react';
 import { useForm } from "react-hook-form";
 
 import { GeneroInput } from '~/components/searchForm/generoInput';
@@ -9,6 +10,7 @@ import { type SearchFormParams, searchFormSchema } from '~/components/searchForm
 import { StatusInput } from '~/components/searchForm/statusInput';
 
 import { searchFormToApiQuery } from '~/lib/converters';
+import { cn } from '~/lib/shadcn';
 import { desaparecidosQueryActions } from '~/state/slices/desaparecidosQuerySlice';
 import { useAppDispatch } from '~/state/store';
 
@@ -16,7 +18,9 @@ import { Button } from "~ui/button";
 import { Form } from "~ui/form";
 
 
-function SearchForm() {
+type SearchFormProps = Omit<ComponentProps<'form'>, 'onSubmit'>;
+
+function SearchForm({ className, ...props }: SearchFormProps) {
   const form = useForm<SearchFormParams>({ resolver: zodResolver(searchFormSchema) });
   const appDispatch = useAppDispatch();
 
@@ -27,14 +31,18 @@ function SearchForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 max-w-3xl mx-auto py-10">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className={cn('flex flex-col gap-8 @container/form', className)}
+        {...props}
+      >
         <NomeInput control={form.control} />
         <IdadeInput control={form.control} />
-        <div className="grid grid-cols-12 gap-4">
-          <div className="col-span-6">
+        <div className="grid grid-cols-1 @xs/form:grid-cols-2 gap-8">
+          <div>
             <GeneroInput control={form.control} />
           </div>
-          <div className="col-span-6">
+          <div>
             <StatusInput control={form.control} />
           </div>
         </div>
