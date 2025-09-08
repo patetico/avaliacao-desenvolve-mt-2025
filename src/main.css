@@ -21,3 +21,7 @@
   --color-encontrada: var(--encontrada);
   --color-desaparecida: var(--desaparecida);
 }
+
+html, body {
+  @apply bg-background
+}
