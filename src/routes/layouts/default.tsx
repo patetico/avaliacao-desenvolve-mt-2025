@@ -1,4 +1,3 @@
-import { ExternalLink, Info } from 'lucide-react';
 import { Link, Outlet } from 'react-router';
 import PageFooter from '~/components/pageFooter';
 import PageHeader from '~/components/pageHeader.tsx';
@@ -21,19 +20,7 @@ function FrontPage() {
           <Outlet />
         </div>
 
-        <PageFooter className="text-sm flex justify-center text-muted-foreground">
-          <Info className="size-5" />
-          Saiba mais sobre o projeto no
-          <a
-            href="https://github.com/patetico/avaliacao-desenvolve-mt-2025/"
-            className="border-b border-current"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {'Github'}
-            <ExternalLink className="inline-block size-3 mb-1 ml-1" />
-          </a>
-        </PageFooter>
+        <PageFooter className="text-sm flex justify-center text-muted-foreground sticky bottom-0 bg-background" />
       </div>
     </ThemeProvider>
   );

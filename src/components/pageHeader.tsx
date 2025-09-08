@@ -8,7 +8,7 @@ import { Separator } from '~ui/separator.tsx';
 
 
 const PageHeader = ({ className, children, ...props }: ComponentProps<'header'>) => (
-  <header className={cn("flex h-(--header-height) shrink-0 items-center gap-2 border-b p-4", className)} {...props}>
+  <header className={cn("flex h-header shrink-0 items-center gap-2 border-b px-4", className)} {...props}>
     <Link to="/">
       <span className="sr-only">Ir para página inicial</span>
       <UserRoundSearch />

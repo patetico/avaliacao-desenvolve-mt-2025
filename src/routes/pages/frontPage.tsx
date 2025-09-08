@@ -5,7 +5,7 @@ import SearchForm from '~/components/searchForm';
 function FrontPage() {
   return (
     <div className="flex flex-col xl:flex-row">
-      <aside className="xl:sticky bg-background top-(--header-height) left-0 xl:h-[calc(100lvh_-_var(--header-height))] xl:border-r px-8 py-4 w-96">
+      <aside className="xl:sticky xl:h-main-content bg-background top-header left-0 xl:border-r px-8 py-4 w-96">
         <SearchForm />
       </aside>
 

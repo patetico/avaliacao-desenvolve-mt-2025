@@ -1,9 +1,23 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
 @import "./shadcn.css";
 
 :root {
-  --header-height: calc(var(--spacing) * 16);
+  --encontrada: oklch(0.522 0.158 146);
+  --desaparecida: oklch(0.577 0.22 27);
 }
 
-html, body {
-  background: var(--background);
+.dark {
+  --encontrada: oklch(0.63 0.187 146.35);
+  --desaparecida: oklch(0.528 0.206 27.57);
+}
+
+@theme inline {
+  --spacing-header: --spacing(16);
+  --spacing-footer: --spacing(10);
+  --spacing-main-content: calc(100lvh - var(--spacing-header) - var(--spacing-footer));
+
+  --color-encontrada: var(--encontrada);
+  --color-desaparecida: var(--desaparecida);
 }
