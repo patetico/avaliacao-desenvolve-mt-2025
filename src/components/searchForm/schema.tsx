@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 
 export const searchFormSchema = z.object({
-  nome: z.preprocess((v?: string) => v?.trim() || undefined, z.string().min(4)).optional(),
+  nome: z.union([z.string().trim().max(0), z.string().trim().min(4).optional()]),
   idade: z.tuple([
     z.number().min(0).max(150),
     z.number().min(0).max(150),
