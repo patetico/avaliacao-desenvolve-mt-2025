@@ -26,6 +26,8 @@ function Slider(
     [value, defaultValue, min, max],
   );
 
+  const labelTop = labelPosition === 'top';
+
   return (
     <>
       <SliderPrimitive.Root
@@ -63,7 +65,10 @@ function Slider(
               <div
                 className={cn(
                   'absolute flex w-full justify-center p-1',
-                  { "bottom-full": labelPosition === 'top', "top-full": labelPosition === 'bottom' },
+                  {
+                    "bottom-full": labelTop === !(index % 2),
+                    "top-full": labelTop !== !(index % 2),
+                  },
                 )}
               >
                 {labelRender(_values[index])}

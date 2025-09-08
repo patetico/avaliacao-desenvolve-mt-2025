@@ -14,13 +14,13 @@ const IdadeInput = ({ control, ...otherProps }: ControllerWithoutRenderProps) =>
         <FormLabel >Idade:</FormLabel>
         <FormControl>
           <Slider
-            className="pt-4"
+            className="py-6 px-4"
             min={0}
             max={100}
             step={1}
             value={field.value}
             onValueChange={field.onChange}
-            labelRender={(v) => (<div className="whitespace-pre text-sm">{v}{v > 99 && '+'} {plural(v, 'ano')}</div>)}
+            labelRender={(v) => (<span className="whitespace-pre text-sm">{v}{v > 99 && '+'} {plural(v, 'ano')}</span>)}
           />
         </FormControl>
         <ClearField field={field} />
