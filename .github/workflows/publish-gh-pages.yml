@@ -40,6 +40,8 @@ jobs:
 
       - name: Build
         run: pnpm run build
+        env:
+          VITE_USE_HASH_ROUTER: true
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
