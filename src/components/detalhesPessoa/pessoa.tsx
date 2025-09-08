@@ -86,7 +86,7 @@ function Pessoa({ detalhes, className, ...props }: ComponentProps<'div'> & Detal
           <FotoPessoaDesaparecida url={detalhes?.urlFoto} align="top" />
         </div>
       </div>
-      <div className="md:flex-4 md:basis-1">
+      <div className="w-full md:flex-4 md:basis-1">
         <ul>
           <li className="mb-2">
             <StatusDesaparecimento status={detalhes.statusTxt} />
