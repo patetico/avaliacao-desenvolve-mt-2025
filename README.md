@@ -1,69 +1,112 @@
-# React + TypeScript + Vite
+# Projeto prático Desenvolve MT 2025
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![typescript](https://img.shields.io/badge/typescript-v5-2f74c0?logo=typescript)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-v19-58c4dc.svg?logo=react)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-v7-646cff.svg?logo=vite)](https://vitejs.dev/)
+[![React Router](https://img.shields.io/badge/React%20Router-v7-121212?logo=reactrouter)](https://reactrouter.com)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-00bcff.svg?logo=tailwindcss)](https://tailwindcss.com/)
+[![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-v3-0a0a0a?logo=shadcnui)](https://ui.shadcn.com/)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Sobre
 
-## Expanding the ESLint configuration
+Esta aplicação consome api para busca de pessoas desaparecidas. Foi desenvolvida para o processo seletivo da Desenvolve
+MT 2025. O resultado pode ser visualizado em https://patetico.github.io/avaliacao-desenvolve-mt-2025
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Dados de inscrição
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Nome: Felipe Borges de Lima Naufal
+- Email: felipenaufal@gmail.com
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Instalação e execução
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Via docker
+
+<details>
+<summary>Usando imagem pré-compilada</summary>
+
+```bash
+# Obtenha o container através do ghcr
+docker pull ghcr.io/patetico/avaliacao-desenvolve-mt-2025:latest
+
+# Rode o container bindando a porta `80` para uma porta local
+docker run -p 8080:80 ghcr.io/patetico/avaliacao-desenvolve-mt-2025
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+A página estará disponível na url `http://localhost:8080`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+> ❗ Nota: esta opção **não** permite o uso das configurações [listadas abaixo](#configurações-disponíveis)
+</details>
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**ou**
+
+<details>
+<summary>Compilando a imagem localmente</summary>
+
+```bash
+# Clone o projeto
+git pull https://github.com/patetico/avaliacao-desenvolve-mt-2025.git
+
+# Construa a imagem
+docker build . -t avaliacao-desenvolve-mt-2025
+
+# Rode o container bindando a porta `80` para uma porta local
+docker run -p 8080:80 avaliacao-desenvolve-mt-2025
 ```
+
+A página estará disponível na url `http://localhost:8080`
+
+A imagem também pode ser compilada usando umas das [configurações disponíveis](#configurações-disponíveis) editando o
+arquivo `.env` ou diretamente pela linha de comando:
+
+```bash
+docker build . -t avaliacao-desenvolve-mt-2025 --build-arg VITE_USE_HASH_ROUTER=true --build-arg VITE_API_SERVER_HOST="http://localhost:3000/" 
+```
+
+</details>
+
+### Rodando localmente
+
+<details>
+<summary>Informações</summary>
+
+Ferramentas recomendadas:
+
+- [Node.js v24](https://nodejs.org/en/download)
+- [pnpm v10](https://pnpm.io/installation)
+
+```bash
+# Clone o projeto
+git pull https://github.com/patetico/avaliacao-desenvolve-mt-2025.git
+
+# Instale as dependências
+pnpm install --frozen-lockfile
+
+# Compile a versão de produção
+pnpm run build
+
+# Execute o comando para servir a aplicação
+pnpm run preview
+```
+
+A página estará disponível na url `http://localhost:4173`
+
+Também é possível rodar a aplicação alterando uma das [configurações disponíveis](#configurações-disponíveis) editando o
+arquivo `.env` ou diretamente pela linha de comando:
+
+```bash
+VITE_USE_HASH_ROUTER=true VITE_API_SERVER_HOST="http://localhost:3000/" pnpm run build
+```
+
+</details>
+
+## Configurações disponíveis:
+
+Estas configurações podem ser usadas durante a compilação da imagem docker ou do projeto local. Confira as seções
+anteriores para detalhes sobre como aplicá-las.
+
+- `VITE_USE_HASH_ROUTER`: se vazio, a aplicação usará
+  o [BrowserRouter](https://reactrouter.com/api/data-routers/createBrowserRouter) do react router. Caso contrário usará
+  o [HashRouter](https://reactrouter.com/api/data-routers/createHashRouter)
+- `VITE_API_SERVER_HOST`: permite alterar o endpoint da api
