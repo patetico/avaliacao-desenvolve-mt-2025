@@ -80,13 +80,13 @@ function StatusDesaparecimento({ status }: { status: string }) {
 
 function Pessoa({ detalhes, className, ...props }: ComponentProps<'div'> & DetalhesPessoa) {
   return (
-    <div className={cn("flex justify-center items-start gap-6 p-6 w-full min-h-[75lvh] max-w-7xl", className)} {...props}>
-      <div className="flex-3 basis-1">
-        <div className="aspect-3/4">
+    <div className={cn("flex flex-col md:flex-row justify-center items-center md:items-start gap-6 p-6 w-full min-h-[75lvh] max-w-7xl", className)} {...props}>
+      <div className="h-[50lvh] md:h-auto md:flex-3 md:basis-1">
+        <div className="h-full aspect-3/4">
           <FotoPessoaDesaparecida url={detalhes?.urlFoto} align="top" />
         </div>
       </div>
-      <div className="flex-4 basis-2">
+      <div className="md:flex-4 md:basis-1">
         <ul>
           <li className="mb-2">
             <StatusDesaparecimento status={detalhes.statusTxt} />
