@@ -4,8 +4,10 @@ on:
   schedule:
     - cron: '29 21 * * *'
   push:
-    branches: [ "main" ]
-    tags: [ 'v*.*.*' ]
+    branches:
+      - main
+    tags:
+      - v*.*.*
   workflow_dispatch:
 
 env:
