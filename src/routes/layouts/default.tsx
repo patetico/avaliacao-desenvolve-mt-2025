@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router';
+import { Link, Outlet } from 'react-router';
 import PageHeader from '~/components/pageHeader.tsx';
 import ThemeProvider from '~/components/themeProvider';
 
@@ -8,7 +8,9 @@ function FrontPage() {
     <ThemeProvider>
       <PageHeader className="sticky bg-background top-0 left-0 z-50">
         <h1 className="text-2xl font-bold">
-          Busca de pessoas desaparecidas
+          <Link to="/">
+            Pessoas desaparecidas
+          </Link>
         </h1>
       </PageHeader>
 
