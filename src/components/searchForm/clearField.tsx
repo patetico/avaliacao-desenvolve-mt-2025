@@ -1,27 +1,35 @@
+import { Eraser } from 'lucide-react';
 import { type ComponentProps } from 'react';
 import type { ControllerRenderProps } from 'react-hook-form';
 import { cn } from '~/lib/shadcn';
-import { Button, type UiButtonProps } from '~ui/button';
+import { Button } from '~ui/button';
+import { Tooltip, TooltipContent, TooltipTrigger } from '~ui/tooltip';
 
 
-interface ClearFieldProps extends ComponentProps<'div'> {
+interface ClearFieldProps extends ComponentProps<'button'> {
   field: ControllerRenderProps;
-  btnProps?: Omit<UiButtonProps, 'onClick'>;
 }
 
-const ClearField = ({ field, className, btnProps, ...props }: ClearFieldProps) => {
-  if (field.value === undefined) return null;
-
+const ClearField = ({ field, className, ...props }: ClearFieldProps) => {
   return (
-    <div className={cn("self-start", className)} {...props}>
-      <Button
-        variant="ghost"
-        className={cn('cursor-pointer')}
-        onClick={() => field.onChange(undefined)} {...btnProps}
-      >
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button
+          size="iconSm"
+          variant="ghostDestructive"
+          className={cn('cursor-pointer', field.value ?? 'invisible', className)}
+          onClick={() => field.onChange(undefined)}
+          {...props}
+        >
+          <span className="sr-only">Limpar</span>
+          <Eraser />
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent>
         Limpar
-      </Button>
-    </div>
+      </TooltipContent>
+    </Tooltip>
+
   );
 };
 

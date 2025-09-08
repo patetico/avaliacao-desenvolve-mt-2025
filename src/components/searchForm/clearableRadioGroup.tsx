@@ -15,7 +15,10 @@ const ClearableRadioGroup = ({ control, label, items, ...otherProps }: Clearable
     control={control}
     render={({ field }) => (
       <FormItem className="space-y-3">
-        <FormLabel>{label}</FormLabel>
+        <FormLabel>
+          {label}
+          <ClearField field={field} />
+        </FormLabel>
         <FormControl>
           <RadioGroup
             value={field.value || null}
@@ -34,7 +37,6 @@ const ClearableRadioGroup = ({ control, label, items, ...otherProps }: Clearable
             ))}
           </RadioGroup>
         </FormControl>
-        <ClearField field={field} />
         <FormMessage />
       </FormItem>
     )}

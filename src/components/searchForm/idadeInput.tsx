@@ -11,7 +11,10 @@ const IdadeInput = ({ control, ...otherProps }: ControllerWithoutRenderProps) =>
     name="idade"
     render={({ field }) => (
       <FormItem>
-        <FormLabel >Idade:</FormLabel>
+        <FormLabel>
+          Idade:
+          <ClearField field={field} />
+        </FormLabel>
         <FormControl>
           <Slider
             className="py-6 px-4"
@@ -23,7 +26,6 @@ const IdadeInput = ({ control, ...otherProps }: ControllerWithoutRenderProps) =>
             labelRender={(v) => (<span className="whitespace-pre text-sm">{v}{v > 99 && '+'} {plural(v, 'ano')}</span>)}
           />
         </FormControl>
-        <ClearField field={field} />
         <FormMessage />
       </FormItem>
     )}
