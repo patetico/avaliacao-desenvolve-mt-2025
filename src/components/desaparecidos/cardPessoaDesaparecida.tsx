@@ -51,7 +51,9 @@ function CardPessoaDesaparecida({ pessoa, ...props }: CardPessoaDesaparecidaProp
             </span>
           </div>
           <div className="aspect-square w-full">
-            <FotoPessoaDesaparecida url={urlFoto} />
+            <Link to={`/pessoa/${id}`}>
+              <FotoPessoaDesaparecida url={urlFoto} />
+            </Link>
           </div>
           <CardTitle className="uppercase">{nome}</CardTitle>
           <CardDescription>{idadeTxt}, sexo {sexo?.toLowerCase()}</CardDescription>
