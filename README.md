@@ -46,7 +46,7 @@ A página estará disponível na url `http://localhost:8080`
 
 ```bash
 # Clone o projeto
-git pull https://github.com/patetico/avaliacao-desenvolve-mt-2025.git
+git clone https://github.com/patetico/avaliacao-desenvolve-mt-2025.git
 
 # Construa a imagem
 docker build . -t avaliacao-desenvolve-mt-2025
@@ -78,7 +78,7 @@ Ferramentas recomendadas:
 
 ```bash
 # Clone o projeto
-git pull https://github.com/patetico/avaliacao-desenvolve-mt-2025.git
+git clone https://github.com/patetico/avaliacao-desenvolve-mt-2025.git
 
 # Instale as dependências
 pnpm install --frozen-lockfile
